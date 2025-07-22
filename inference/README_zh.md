@@ -102,6 +102,27 @@ python vllm_cli_demo.py # LLM Such as GLM-4-9B-0414
 vllm serve THUDM/GLM-4-9B-0414 --tensor_parallel_size 2
 ```
 
+### 使用 glm-4 构建 OpenAI 服务
+
+启动服务端
+
+```shell
+python glm4_server.py THUDM/GLM-4-9B-0414
+```
+
+客户端请求：
+
+```shell
+curl -X POST http://127.0.0.1:8000/v1/chat/completions \
+-H 'Content-Type: application/json' \
+-d \
+"{ \
+    \"messages\": [ \
+        {\"role\": \"user\", \"content\": \"Who are you?\"} \
+    ] \
+}"
+```
+
 ### 使用 glm-4v 构建 OpenAI 服务
 
 启动服务端
